@@ -1,0 +1,99 @@
+<style type="text/css" media="screen">
+    .dd {
+        display: inline-block;
+    }
+        .dd div {
+            cursor: pointer;
+            padding: 5px 10px;
+            background: #ccc;
+        }
+            .dd.expanded div {
+                color: #fff;
+                background: #333;
+            }
+
+        .dd ul {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            box-shadow: 0 1px 3px rgba(0,0,0,.5);
+            list-style: none;
+        }
+            .dd li {
+                cursor: pointer;
+                padding: 5px 20px;
+            }
+                .dd li:hover {
+                    color: #fff;
+                    background: #666;
+                }
+
+                .dd li[disabled] {
+                    color: #ccc;
+                    cursor: text;
+                    background: none;
+                }
+</style>
+
+
+<div id="one" class="dd expanded">
+    <div>Menu</div>
+    <ul>
+        <li>item 1</li>
+        <li disabled="true">item 2</li>
+        <li><b>item 3</b></li>
+        <li><i><a href="https://e.mail.ru/" target="_blank">item 4</a></i></li>
+    </ul>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div id="two" class="dd expanded">
+    <div>Menu</div>
+    <ul>
+        <li>item 1</li>
+        <li disabled="true">item 2</li>
+        <li><b>item 3</b></li>
+        <li><i><a href="https://e.mail.ru/" target="_blank">item 4</a></i></li>
+    </ul>
+</div>
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+<hr id="hr1"></hr>
+<hr id="hr2"></hr>
+
+
+
+
+
+<script src="Dropdown.js"></script>
+<script>
+    // Выпадуля первая
+    var dropdown1 = new Dropdown('#one');
+
+    dropdown1.on('open', function() {
+        document.querySelector('#hr1').innerHTML = 'Dropdown is open';
+    });
+
+    dropdown1.on('close', function() {
+        document.querySelector('#hr1').innerHTML = 'Dropdown is closed';
+    });
+
+
+
+
+    // Выпадуля вторая
+    var dropdown2 = new Dropdown('#two', {
+        openBy: 'hover'
+    });
+
+    dropdown2.on('open', function() {
+        document.querySelector('#hr2').innerHTML = 'Dropdown is open';
+    });
+
+    dropdown2.on('close', function() {
+        document.querySelector('#hr2').innerHTML = 'Dropdown is closed';
+    });
+
+</script>
